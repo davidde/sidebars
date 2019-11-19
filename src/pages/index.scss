@@ -23,6 +23,12 @@ body {
   grid-template-areas: 'left-header  main-header  right-header'
                        'left-content main-content right-content';
   min-height: 100vh;
+  &.leftPassive {
+    --left-width: 0;
+  }
+  &.rightPassive {
+    --right-width: 0;
+  }
 }
 
 #left {
@@ -37,9 +43,7 @@ body {
       line-height: var(--header-height);
       font-size: calc(var(--header-height) / 2);
       text-align: center;
-      &:hover {
-        background: green;
-      }
+      cursor: pointer;
     }
     .title {
       height: 100%; /* Required to prevent overflow! */
@@ -82,9 +86,7 @@ body {
       line-height: var(--header-height);
       font-size: calc(var(--header-height) / 2);
       text-align: center;
-      &:hover {
-        background: green;
-      }
+      cursor: pointer;
     }
     .title {
       height: 100%; /* Required to prevent overflow! */
