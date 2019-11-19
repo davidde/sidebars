@@ -8,29 +8,42 @@ body {
   margin: 0;
   overflow: hidden; // Disable scrolling on body
   background: springgreen;
+  --left-width: 25vw;
+  --right-width: 25vw;
 }
 
 #layout {
   display: grid;
   // grid-template-columns: 1fr auto 1fr;
-  grid-template-columns: 25vw auto 25vw;
+  grid-template-columns: var(--left-width) auto var(--right-width);
   grid-template-rows: 4rem 1fr;
-  grid-template-areas: 'left main right'
-                       'left main right';
+  // grid-template-areas: 'left main right'
+  //                      'left main right';
+  grid-template-areas: 'left-header  main-header  right-header'
+                       'left-content main-content right-content';
   min-height: 100vh;
 }
 
 #left {
-  grid-area: left;
-  width: 25vw;
+  // grid-area: left;
+  display: contents;
+  .header {
+    grid-area: left-header;
+  }
 }
 
 #main {
-  grid-area: main;
-  // width: 25vw;
+  // grid-area: main;
+  display: contents;
+  .header {
+    grid-area: main-header;
+  }
 }
 
 #right {
-  grid-area: right;
-  width: 25vw;
+  // grid-area: right;
+  display: contents;
+  .header {
+    grid-area: right-header;
+  }
 }

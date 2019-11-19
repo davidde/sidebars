@@ -5,12 +5,27 @@ import './index.scss';
 export default () =>
   <div id='layout'>
       <div id='left'>
-          Leftside!
+          <div className='header'>
+              Header!
+          </div>
+          <div className='content'>
+              Content!
+          </div>
       </div>
       <div id='main'>
-          Main!
+          <div className='header'>
+              Header!
+          </div>
+          <div className='content'>
+              Content!
+          </div>
       </div>
       <div id='right'>
-          Rightside!
+          <div className='header'>
+              Header!
+          </div>
+          <div className='content'>
+              Content!
+          </div>
       </div>
   </div>
