@@ -10,13 +10,14 @@ body {
   background: springgreen;
   --left-width: 25vw;
   --right-width: 25vw;
+  --header-height: 4rem;
 }
 
 #layout {
   display: grid;
   // grid-template-columns: 1fr auto 1fr;
   grid-template-columns: var(--left-width) auto var(--right-width);
-  grid-template-rows: 4rem 1fr;
+  grid-template-rows: var(--header-height) 1fr;
   // grid-template-areas: 'left main right'
   //                      'left main right';
   grid-template-areas: 'left-header  main-header  right-header'
@@ -29,6 +30,26 @@ body {
   display: contents;
   .header {
     grid-area: left-header;
+    .icon {
+      float: left;
+      width: var(--header-height);
+      height: var(--header-height);
+      line-height: var(--header-height);
+      font-size: calc(var(--header-height) / 2);
+      text-align: center;
+      &:hover {
+        background: green;
+      }
+    }
+    .title {
+      height: 100%; /* Required to prevent overflow! */
+      line-height: var(--header-height); /* Vertical center */
+      text-align: center; /* Horizontal center */
+    }
+  }
+  .content {
+    text-align: center;
+    line-height: calc(100vh - var(--header-height));
   }
 }
 
@@ -37,6 +58,15 @@ body {
   display: contents;
   .header {
     grid-area: main-header;
+    .title {
+      height: 100%; /* Required to prevent overflow! */
+      line-height: var(--header-height); /* Vertical center */
+      text-align: center; /* Horizontal center */
+    }
+  }
+  .content {
+    text-align: center;
+    line-height: calc(100vh - var(--header-height));
   }
 }
 
@@ -45,5 +75,25 @@ body {
   display: contents;
   .header {
     grid-area: right-header;
+    .icon {
+      float: right;
+      width: var(--header-height);
+      height: var(--header-height);
+      line-height: var(--header-height);
+      font-size: calc(var(--header-height) / 2);
+      text-align: center;
+      &:hover {
+        background: green;
+      }
+    }
+    .title {
+      height: 100%; /* Required to prevent overflow! */
+      line-height: var(--header-height); /* Vertical center */
+      text-align: center; /* Horizontal center */
+    }
+  }
+  .content {
+    text-align: center;
+    line-height: calc(100vh - var(--header-height));
   }
 }

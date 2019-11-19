@@ -6,26 +6,38 @@ export default () =>
   <div id='layout'>
       <div id='left'>
           <div className='header'>
-              Header!
+              <div className='icon'>
+                L
+              </div>
+              <div className='title'>
+                Left header
+              </div>
           </div>
           <div className='content'>
-              Content!
+              Left content
           </div>
       </div>
       <div id='main'>
           <div className='header'>
-              Header!
+              <div className='title'>
+                Main header
+              </div>
           </div>
           <div className='content'>
-              Content!
+              Main content
           </div>
       </div>
       <div id='right'>
           <div className='header'>
-              Header!
+              <div className='icon'>
+                R
+              </div>
+              <div className='title'>
+                Right header
+              </div>
           </div>
           <div className='content'>
-              Content!
+              Right content
           </div>
       </div>
   </div>
