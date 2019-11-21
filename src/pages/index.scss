@@ -26,7 +26,7 @@ body {
   grid-template-areas:  'left main right';
 }
 
-// Grid area ID's:
+// Main area specific style:
 #main { grid-area: main;
   background: var(--bg-main);
   .header {
@@ -34,49 +34,53 @@ body {
   }
 }
 
+// Left sidebar specific style:
 #left { grid-area: left;
+  .icon { left: 0; }
   .sidebar { background: var(--bg-left);
     &.closed { transform: translateX(-100%); }
+    // ^-- Left landscape orientation adaptive sidebar!
+    .header { left: var(--header-height); }
   }
-  .header { left: var(--header-height); }
-  .icon { left: 0; }
 }
 
+// Right sidebar specific style:
 #right { grid-area: right;
+  .icon { right: 0; }
   .sidebar { background: var(--bg-right);
     @media (orientation: portrait) { 
       &.open { transform: translateX(-100%); }
-    }
+    } // <--^ Right portrait orientation overlapping sidebar!
   }
-  .icon { right: 0; }
 }
 
+// Style in common for both sidebars:
 #left, #right { width: 0;
   transition: width var(--secs);
   @media (orientation: landscape) {
     &.open { width: var(--landscape-width); }
+  } // <--^ Landscape orientation adaptive sidebars
+  .icon { position: fixed; top: 0;
+    z-index: 10; cursor: pointer;
+    width: var(--header-height);
+    height: var(--header-height);
+    line-height: var(--header-height);
+    font-size: var(--header-height);
+    text-align: center; user-select: none;
+  }
+  .sidebar { width: var(--landscape-width);
+    @media (orientation: portrait) { width: var(--portrait-width); }
+    transform: translateX(0%); // <-- Portrait AND landscape!
+    transition: transform var(--secs);
+    .header { width: calc(100% - var(--header-height)); }
   }
 }
 
-// Styles in common for classes used in grid areas:
-.icon { position: fixed; top: 0;
-  z-index: 10; cursor: pointer;
-  width: var(--header-height);
-  height: var(--header-height);
-  line-height: var(--header-height);
-  font-size: var(--header-height);
-  text-align: center; user-select: none;
-}
-.sidebar { width: var(--landscape-width);
-  @media (orientation: portrait) { width: var(--portrait-width); }
-  .header { width: calc(100% - var(--header-height)); }
-  transition: transform var(--secs);
-  transform: translateX(0%);
-}
+// Style in common for all 3 grid areas:
 .header { position: relative; top: 0;
   height: var(--header-height);
-  line-height: var(--header-height); /* Vertical center */
-  text-align: center; /* Horizontal center */
+  line-height: var(--header-height); // Vertical center
+  text-align: center; // Horizontal center
 }
 .content {
   text-align: center;
