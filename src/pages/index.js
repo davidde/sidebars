@@ -7,72 +7,68 @@ class Layout extends React.Component {
     super(props);
 
     this.state = {
-      leftActive: true,
-      rightActive: true,
+      leftOpen: true,
+      rightOpen: true,
     }
   }
 
   toggleLeft = () => {
-    this.setState({ leftActive: !this.state.leftActive });
+    this.setState({ leftOpen: !this.state.leftOpen });
   }
 
   toggleRight = () => {
-    this.setState({ rightActive: !this.state.rightActive });
+    this.setState({ rightOpen: !this.state.rightOpen });
   }
 
   render() {
-    let leftActive = this.state.leftActive ? 'leftActive' : 'leftPassive';
-    let rightActive = this.state.rightActive ? 'rightActive' : 'rightPassive';
+    let leftOpen = this.state.leftOpen ? 'left-open' : 'left-closed';
+    let rightOpen = this.state.rightOpen ? 'right-open' : 'right-closed';
 
     return (
       <div
         id='layout'
-        className={`${leftActive} ${rightActive}`}
+        className={`${leftOpen} ${rightOpen}`}
       >
-          <div id='left' className={leftActive} >
-              <div className='header'>
-                  <div
-                    className='icon'
-                    onClick={this.toggleLeft}
-                  >
-                    L
-                  </div>
-                  <div className='title'>
-                    Left header
-                  </div>
-              </div>
-              <div className='content'>
-                  Left content
-              </div>
-          </div>
 
           <div id='main'>
               <div className='header'>
-                  <div className='title'>
-                    Main header
-                  </div>
+                  Main header
               </div>
               <div className='content'>
                   Main content
               </div>
           </div>
 
-          <div id='right' className={rightActive} >
-              <div className='header'>
-                  <div
-                    className='icon'
-                    onClick={this.toggleRight}
-                  >
-                    R
-                  </div>
-                  <div className='title'>
-                    Right header
-                  </div>
+          <div id='leftside' className={leftOpen} >
+              <div className='icon'
+                   onClick={this.toggleLeft} >
+                   &equiv;
               </div>
-              <div className='content'>
-                  Right content
+              <div className='sidebar'>
+                  <div className='header'>
+                      Left header
+                  </div>
+                  <div className='content'>
+                      Left content
+                  </div>
               </div>
           </div>
+
+          <div id='rightside' className={rightOpen} >
+              <div className='icon'
+                   onClick={this.toggleRight} >
+                   &equiv;
+              </div>
+              <div className='sidebar'>
+                  <div className='header'>
+                      Right header
+                  </div>
+                  <div className='content'>
+                      Right content
+                  </div>
+              </div>
+          </div>
+
       </div>
     );
   }
