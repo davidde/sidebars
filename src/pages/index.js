@@ -21,17 +21,14 @@ class Layout extends React.Component {
   }
 
   render() {
-    let leftOpen = this.state.leftOpen ? 'left-open' : 'left-closed';
-    let rightOpen = this.state.rightOpen ? 'right-open' : 'right-closed';
+    let leftOpen = this.state.leftOpen ? 'open' : 'closed';
+    let rightOpen = this.state.rightOpen ? 'open' : 'closed';
 
     return (
-      <div
-        id='layout'
-        className={`${leftOpen} ${rightOpen}`}
-      >
+      <div id='layout'>
 
           <div id='main'>
-              <div className='header'>
+              <div className={`header ${'left-' + leftOpen} ${'right-' + rightOpen}`} >
                   Main header
               </div>
               <div className='content'>
@@ -44,7 +41,7 @@ class Layout extends React.Component {
                    onClick={this.toggleLeft} >
                    &equiv;
               </div>
-              <div className='sidebar'>
+              <div className={`sidebar ${leftOpen}`} >
                   <div className='header'>
                       Left header
                   </div>
@@ -59,7 +56,7 @@ class Layout extends React.Component {
                    onClick={this.toggleRight} >
                    &equiv;
               </div>
-              <div className='sidebar'>
+              <div className={`sidebar ${rightOpen}`} >
                   <div className='header'>
                       Right header
                   </div>
