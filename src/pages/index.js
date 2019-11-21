@@ -36,7 +36,7 @@ class Layout extends React.Component {
               </div>
           </div>
 
-          <div id='leftside' className={leftOpen} >
+          <div id='left' className={leftOpen} >
               <div className='icon'
                    onClick={this.toggleLeft} >
                    &equiv;
@@ -51,7 +51,7 @@ class Layout extends React.Component {
               </div>
           </div>
 
-          <div id='rightside' className={rightOpen} >
+          <div id='right' className={rightOpen} >
               <div className='icon'
                    onClick={this.toggleRight} >
                    &equiv;
