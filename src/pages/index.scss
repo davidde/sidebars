@@ -1,4 +1,4 @@
-* {
+div {
   outline: 1px solid red;
 }
 
@@ -32,8 +32,7 @@ body {
   .header {
     background: linear-gradient(to right, var(--bg-left), var(--bg-right));
     @media (orientation: landscape) {
-      .title { position: absolute; left: 0; right: 0;
-        transition: left var(--secs), right var(--secs);
+      .title { transition: left var(--secs), right var(--secs);
         &.left-closed { left: var(--header-height); }
         &.right-closed { right: var(--header-height); }
       }
@@ -63,8 +62,7 @@ body {
 }
 
 // Style in common for both sidebars:
-#left, #right { width: 0;
-  transition: width var(--secs);
+#left, #right { transition: width var(--secs); width: 0;
   @media (orientation: landscape) {
     &.open { width: var(--landscape-width); }
   } // <--^ Landscape orientation adaptive sidebars
@@ -76,10 +74,10 @@ body {
     font-size: var(--header-height);
     text-align: center; user-select: none;
   }
-  .sidebar { width: var(--landscape-width);
-    @media (orientation: portrait) { width: var(--portrait-width); }
+  .sidebar { transition: transform var(--secs);
     transform: translateX(0%); // <-- Portrait AND landscape!
-    transition: transform var(--secs);
+    @media (orientation: portrait) { width: var(--portrait-width); }
+    @media (orientation: landscape) { width: var(--landscape-width); }
     .header { width: calc(100% - var(--header-height)); }
   }
 }
@@ -87,10 +85,10 @@ body {
 // Style in common for all 3 grid areas:
 .header { position: relative; top: 0;
   height: var(--header-height);
-  line-height: var(--header-height); // Vertical center
   text-align: center; // Horizontal center
+  .title { position: absolute; left: 0; right: 0; }
 }
 .content {
-  text-align: center;
-  line-height: calc(100vh - var(--header-height));
+  height: 100vh;
+  padding: 1rem;
 }
