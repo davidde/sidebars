@@ -28,12 +28,14 @@ class Layout extends React.Component {
       <div id='layout'>
 
           <div id='main'>
-              <div className={`
-                  header
-                  ${'left-' + leftOpen}
-                  ${'right-' + rightOpen}
-              `}>
-                  Main header
+              <div className='header'>
+                  <div className={`
+                      title
+                      ${'left-' + leftOpen}
+                      ${'right-' + rightOpen}
+                  `}>
+                      Main header
+                  </div>
               </div>
               <div className='content'>
                   Main content
