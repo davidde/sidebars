@@ -32,8 +32,8 @@ class Layout extends React.Component {
     }
   }
 
-  toggleSidebar = (which) => () => {
-    let key = `${which}Open`;
+  toggleSidebar = (event) => {
+    let key = `${event.currentTarget.parentNode.id}Open`;
     this.setState({ [key]: !this.state[key] });
   }
 
@@ -70,7 +70,7 @@ class Layout extends React.Component {
 
           <div id='left' className={leftOpen} >
               <div className='icon'
-                   onClick={this.toggleSidebar('left')} >
+                   onClick={this.toggleSidebar} >
                    &equiv;
               </div>
               <div className={`sidebar ${leftOpen}`} >
@@ -90,7 +90,7 @@ class Layout extends React.Component {
 
           <div id='right' className={rightOpen} >
               <div className='icon'
-                   onClick={this.toggleSidebar('right')} >
+                   onClick={this.toggleSidebar} >
                    &equiv;
               </div>
               <div className={`sidebar ${rightOpen}`} >
