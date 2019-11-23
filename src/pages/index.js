@@ -12,6 +12,26 @@ class Layout extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.leftSidebar = document.querySelector('#left .sidebar');
+    if (this.leftSidebar.classList.contains('open')) {
+      this.leftSidebar.classList.add('open-width');
+    }
+    this.leftSidebar.addEventListener('transitionend', this.fixWidth);
+  }
+
+  componentWillUnmount() {
+    this.leftSidebar.removeEventListener('transitionend', this.fixWidth);
+  }
+
+  fixWidth = () => {
+    if (this.leftSidebar.classList.contains('open')) {
+      this.leftSidebar.classList.add('open-width');
+    } else {
+      this.leftSidebar.classList.remove('open-width');
+    }
+  }
+
   toggleLeft = () => {
     this.setState({ leftOpen: !this.state.leftOpen });
   }
