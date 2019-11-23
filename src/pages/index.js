@@ -32,12 +32,9 @@ class Layout extends React.Component {
     }
   }
 
-  toggleLeft = () => {
-    this.setState({ leftOpen: !this.state.leftOpen });
-  }
-
-  toggleRight = () => {
-    this.setState({ rightOpen: !this.state.rightOpen });
+  toggleSidebar = (which) => () => {
+    let key = `${which}Open`;
+    this.setState({ [key]: !this.state[key] });
   }
 
   render() {
@@ -73,7 +70,7 @@ class Layout extends React.Component {
 
           <div id='left' className={leftOpen} >
               <div className='icon'
-                   onClick={this.toggleLeft} >
+                   onClick={this.toggleSidebar('left')} >
                    &equiv;
               </div>
               <div className={`sidebar ${leftOpen}`} >
@@ -93,7 +90,7 @@ class Layout extends React.Component {
 
           <div id='right' className={rightOpen} >
               <div className='icon'
-                   onClick={this.toggleRight} >
+                   onClick={this.toggleSidebar('right')} >
                    &equiv;
               </div>
               <div className={`sidebar ${rightOpen}`} >
