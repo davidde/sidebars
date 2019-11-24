@@ -15,20 +15,20 @@ class Layout extends React.Component {
   componentDidMount() {
     this.leftSidebar = document.querySelector('#left .sidebar');
     if (this.leftSidebar.classList.contains('open')) {
-      this.leftSidebar.classList.add('open-width');
+      this.leftSidebar.classList.add('grid-width');
     }
-    this.leftSidebar.addEventListener('transitionend', this.fixWidth);
+    this.leftSidebar.addEventListener('transitionend', this.snapToGrid);
   }
 
   componentWillUnmount() {
-    this.leftSidebar.removeEventListener('transitionend', this.fixWidth);
+    this.leftSidebar.removeEventListener('transitionend', this.snapToGrid);
   }
 
-  fixWidth = () => {
+  snapToGrid = () => {
     if (this.leftSidebar.classList.contains('open')) {
-      this.leftSidebar.classList.add('open-width');
+      this.leftSidebar.classList.add('grid-width');
     } else {
-      this.leftSidebar.classList.remove('open-width');
+      this.leftSidebar.classList.remove('grid-width');
     }
   }
 

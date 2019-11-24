@@ -77,7 +77,7 @@ body {
     transform: translateX(0%); // <-- Portrait AND landscape!
     @media (orientation: portrait) { width: var(--portrait-width); }
     @media (orientation: landscape) { width: var(--landscape-width);
-      &.open { &.open-width { width: inherit; } }
+      &.open { &.grid-width { width: inherit; } }
     }
     .header { width: calc(100% - var(--header-height)); }
   }
