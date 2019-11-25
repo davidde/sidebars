@@ -19,16 +19,11 @@ body {
   overflow: hidden; // Disable scrolling on body
 }
 
-// Grid definition:
-#layout {
-  display: grid;
-  grid-template-columns: auto 1fr  auto;
-  grid-template-areas:  'left main right';
-}
+// Flexbox definition:
+#layout { display: flex; }
 
 // Main area specific style:
-#main { grid-area: main;
-  background: var(--bg-main);
+#main { background: var(--bg-main);
   .header {
     background: linear-gradient(to right, var(--bg-left), var(--bg-right));
     @media (orientation: landscape) {
@@ -41,22 +36,19 @@ body {
 }
 
 // Left sidebar specific style:
-#left { grid-area: left; z-index: 5;
-  .icon { left: 0; }
+#left { .icon { left: 0; }
   .sidebar { background: var(--bg-left);
-    &.closed { transform: translateX(-100%); }
-    // ^-- Left landscape orientation adaptive sidebar!
+    &.closed { transform: translateX(-100%); } // <-- Left portrait AND landscape!
     .header { left: var(--header-height); }
-  }
+  } z-index: 5;
 }
 
 // Right sidebar specific style:
-#right { grid-area: right;
-  .icon { right: 0; }
+#right { .icon { right: 0; }
   .sidebar { background: var(--bg-right);
-    @media (orientation: portrait) { 
+    @media (orientation: portrait) {
       &.open { transform: translateX(-100%); }
-    } // <--^ Right portrait orientation overlapping sidebar!
+    } // <--^ Right portrait sidebar ONLY!
   }
 }
 
@@ -64,7 +56,7 @@ body {
 #left, #right { transition: width var(--secs); width: 0;
   @media (orientation: landscape) {
     &.open { width: var(--landscape-width); }
-  } // <--^ Landscape orientation adaptive sidebars
+  } // <--^ Landscape ONLY sidebars
   .icon { position: fixed; top: 0;
     z-index: 10; cursor: pointer;
     width: var(--header-height);
@@ -77,7 +69,7 @@ body {
     transform: translateX(0%); // <-- Portrait AND landscape!
     @media (orientation: portrait) { width: var(--portrait-width); }
     @media (orientation: landscape) { width: var(--landscape-width);
-      &.open { &.grid-width { width: inherit; } }
+      &.open { &.flex-width { width: inherit; } }
     }
     .header { width: calc(100% - var(--header-height)); }
   }
