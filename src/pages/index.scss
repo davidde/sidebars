@@ -26,14 +26,14 @@ body {
 
 // Main area specific style:
 #main {
-  position: absolute; top: 0; left: 0; right: 0;
-  transition: width var(--secs), left var(--secs), right var(--secs);
-  width: 100vw;
-  &.left-open { &.right-open { width: 50vw; }
-    left: 25vw; width: 75vw;
+  .mainbar { position: absolute; top: 0; left: 0; right: 0;
+    transition: width var(--secs), left var(--secs), right var(--secs);
+    background: var(--bg-main); width: 100vw;
+    &.left-open { &.right-open { width: 50vw; }
+      left: 25vw; width: 75vw;
+    }
+    &.right-open { right: 75vw; width: 75vw; }
   }
-  &.right-open { right: 75vw; width: 75vw; }
-  background: var(--bg-main);
   .header { left: 0; right: 0;
     background: linear-gradient(to right, var(--bg-left), var(--bg-right));
     @media (orientation: landscape) {
