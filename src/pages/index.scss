@@ -21,14 +21,15 @@ body {
 
 // Layout definition:
 #layout {
-  position: relative; top: 0;
+  position: relative;
 }
 
 // Main area specific style:
-#main {
-  .mainbar { position: absolute; top: 0; left: 0; right: 0;
+#main { background: var(--bg-main);
+  .mainbar { background: var(--bg-main);
+    position: relative;
+    left: 0; right: 0; width: 100vw;
     transition: width var(--secs), left var(--secs), right var(--secs);
-    background: var(--bg-main); width: 100vw;
     &.left-open { &.right-open { width: 50vw; }
       left: 25vw; width: 75vw;
     }
@@ -64,7 +65,7 @@ body {
 }
 
 // Style in common for both sidebars:
-#left, #right { position: absolute;
+#left, #right { position: absolute; top: 0;
   width: var(--landscape-width);
   @media (orientation: portrait) {
     width: var(--portrait-width);
