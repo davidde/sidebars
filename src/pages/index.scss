@@ -19,11 +19,21 @@ body {
   overflow: hidden; // Disable scrolling on body
 }
 
-// Flexbox definition:
-#layout { display: flex; }
+// Layout definition:
+#layout {
+  position: relative; top: 0;
+}
 
 // Main area specific style:
-#main { background: var(--bg-main);
+#main {
+  position: absolute; top: 0; left: 0;
+  z-index: 5;
+  transition: width var(--secs), left var(--secs);
+  &.left-open { &.right-open { width: 50vw; }
+    left: 25vw; width: 75vw;
+  }
+  &.right-open { width: 75vw; }
+  background: var(--bg-main);
   .header {
     background: linear-gradient(to right, var(--bg-left), var(--bg-right));
     @media (orientation: landscape) {
@@ -36,26 +46,24 @@ body {
 }
 
 // Left sidebar specific style:
-#left { .icon { left: 0; }
-  .sidebar { background: var(--bg-left);
-    &.closed { transform: translateX(-100%); } // <-- Left portrait AND landscape!
-    .header { left: var(--header-height); }
-  } z-index: 5;
+#left { left: 0;
+  .header { left: var(--header-height); }
+  background: var(--bg-left);
+
 }
 
 // Right sidebar specific style:
-#right { .icon { right: 0; }
-  .sidebar { background: var(--bg-right);
-    @media (orientation: portrait) {
-      &.open { transform: translateX(-100%); }
-    } // <--^ Right portrait sidebar ONLY!
-  }
+#right { right: 0;
+  .icon { right: 0; }
+  background: var(--bg-right);
+
 }
 
 // Style in common for both sidebars:
-#left, #right { transition: width var(--secs); width: 0;
-  @media (orientation: landscape) {
-    &.open { width: var(--landscape-width); }
+#left, #right { position: absolute; top: 0;
+  width: var(--landscape-width);
+  @media (orientation: portrait) {
+    width: var(--portrait-width);
   } // <--^ Landscape ONLY sidebars
   .icon { position: fixed; top: 0;
     z-index: 10; cursor: pointer;
@@ -65,14 +73,7 @@ body {
     font-size: var(--header-height);
     text-align: center; user-select: none;
   }
-  .sidebar { transition: transform var(--secs);
-    transform: translateX(0%); // <-- Portrait AND landscape!
-    @media (orientation: portrait) { width: var(--portrait-width); }
-    @media (orientation: landscape) { width: var(--landscape-width);
-      &.open { &.flex-width { width: inherit; } }
-    }
-    .header { width: calc(100% - var(--header-height)); }
-  }
+  .header { width: calc(100% - var(--header-height)); }
 }
 
 // Style in common for all 3 grid areas:
