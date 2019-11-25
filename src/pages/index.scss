@@ -41,7 +41,7 @@ body {
 }
 
 // Left sidebar specific style:
-#left { grid-area: left;
+#left { grid-area: left; z-index: 5;
   .icon { left: 0; }
   .sidebar { background: var(--bg-left);
     &.closed { transform: translateX(-100%); }
@@ -89,7 +89,4 @@ body {
   text-align: center; // Horizontal center
   .title { position: absolute; left: 0; right: 0; }
 }
-.content {
-  height: 100vh;
-  padding: 1rem;
-}
+.content { height: 100vh; padding: 1rem; }
