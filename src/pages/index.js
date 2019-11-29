@@ -14,9 +14,7 @@ class Layout extends React.Component {
 
   componentDidMount() {
     this.leftSidebar = document.querySelector('#left .sidebar');
-    if (this.leftSidebar.classList.contains('open')) {
-      this.leftSidebar.classList.add('grid-width');
-    }
+    this.snapToGrid();
     this.leftSidebar.addEventListener('transitionend', this.snapToGrid);
   }
 
@@ -25,11 +23,8 @@ class Layout extends React.Component {
   }
 
   snapToGrid = () => {
-    if (this.leftSidebar.classList.contains('open')) {
-      this.leftSidebar.classList.add('grid-width');
-    } else {
-      this.leftSidebar.classList.remove('grid-width');
-    }
+    this.leftSidebar.classList.toggle('grid-width',
+        this.leftSidebar.classList.contains('open'));
   }
 
   toggleSidebar = (event) => {
