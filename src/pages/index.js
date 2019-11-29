@@ -14,9 +14,7 @@ class Layout extends React.Component {
 
   componentDidMount() {
     this.leftSidebar = document.querySelector('#left .sidebar');
-    if (this.leftSidebar.classList.contains('open')) {
-      this.leftSidebar.classList.add('flex-width');
-    }
+    this.snapToFlex();
     this.leftSidebar.addEventListener('transitionend', this.snapToFlex);
   }
 
@@ -25,11 +23,8 @@ class Layout extends React.Component {
   }
 
   snapToFlex = () => {
-    if (this.leftSidebar.classList.contains('open')) {
-      this.leftSidebar.classList.add('flex-width');
-    } else {
-      this.leftSidebar.classList.remove('flex-width');
-    }
+    this.leftSidebar.classList.toggle('flex-width',
+        this.leftSidebar.classList.contains('open'));
   }
 
   toggleSidebar = (event) => {
