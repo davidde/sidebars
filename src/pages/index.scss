@@ -24,23 +24,20 @@ body {
 
 // Main area specific style:
 #main { background: var(--bg-main);
-  .header {
-    background: linear-gradient(to right, var(--bg-left), var(--bg-right));
-    @media (orientation: landscape) {
-      .title { transition: left var(--secs), right var(--secs);
-        &.left-closed { left: var(--header-height); }
-        &.right-closed { right: var(--header-height); }
-      }
+  .header { background: linear-gradient(to right, var(--bg-left), var(--bg-right));
+    .title { transition: left var(--secs), right var(--secs);
+      &.left-closed { left: var(--header-height); }
+      &.right-closed { right: var(--header-height); }
     }
   }
 }
 
 // Left sidebar specific style:
-#left { .icon { left: 0; }
+#left { z-index: 5;
   .sidebar { background: var(--bg-left);
     &.closed { transform: translateX(-100%); } // <-- Left portrait AND landscape!
     .header { left: var(--header-height); }
-  } z-index: 5;
+  }
 }
 
 // Right sidebar specific style:
@@ -57,16 +54,12 @@ body {
   @media (orientation: landscape) {
     &.open { width: var(--landscape-width); }
   } // <--^ Landscape ONLY sidebars
-  .icon { position: fixed; top: 0;
-    z-index: 10; cursor: pointer;
-    width: var(--header-height);
-    height: var(--header-height);
-    line-height: var(--header-height);
-    font-size: var(--header-height);
-    text-align: center; user-select: none;
+  .icon { position: fixed; z-index: 10;
+    width: var(--header-height); height: var(--header-height);
+    line-height: var(--header-height); font-size: var(--header-height);
+    text-align: center; user-select: none; cursor: pointer;
   }
-  .sidebar { transition: transform var(--secs);
-    transform: translateX(0%); // <-- Portrait AND landscape!
+  .sidebar { transition: transform var(--secs); // <-- Portrait AND landscape!
     @media (orientation: portrait) { width: var(--portrait-width); }
     @media (orientation: landscape) { width: var(--landscape-width);
       &.open { &.flex-width { width: inherit; } }
@@ -75,8 +68,8 @@ body {
   }
 }
 
-// Style in common for all 3 grid areas:
-.header { position: relative; top: 0;
+// Style in common for sidebars and main area:
+.header { position: relative;
   height: var(--header-height);
   text-align: center; // Horizontal center
   .title { position: absolute; left: 0; right: 0; }

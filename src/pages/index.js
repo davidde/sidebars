@@ -22,7 +22,7 @@ class Layout extends React.Component {
     this.leftSidebar.removeEventListener('transitionend', this.snapToFlex);
   }
 
-  snapToFlex = () => {
+  snapToFlex = () => { // This makes the left sidebar more responsive on window resize
     this.leftSidebar.classList.toggle('flex-width',
         this.leftSidebar.classList.contains('open'));
   }
