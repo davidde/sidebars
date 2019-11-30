@@ -25,9 +25,11 @@ body {
 // Main area specific style:
 #main { background: var(--bg-main);
   .header { background: linear-gradient(to right, var(--bg-left), var(--bg-right));
-    .title { transition: left var(--secs), right var(--secs);
-      &.left-closed { left: var(--header-height); }
-      &.right-closed { right: var(--header-height); }
+    @media (orientation: landscape) {
+      .title { transition: left var(--secs), right var(--secs);
+        &.left-closed { left: var(--header-height); }
+        &.right-closed { right: var(--header-height); }
+      }
     }
   }
 }
