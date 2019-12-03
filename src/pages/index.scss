@@ -3,7 +3,7 @@ div {
 }
 
 :root {
-  --landscape-width: 25vw;
+  --landscape-width: 25; // % OR vw for responsive window resizing!
   --portrait-width: 80vw;
   --header-height: 4rem;
   --secs: 0.4s;
@@ -47,18 +47,15 @@ body {
   .sidebar { background: var(--bg-right);
     @media (orientation: portrait) {
       &.open { transform: translateX(-100%); }
-    } // <--^ Right portrait sidebar ONLY!
+    } // <-- Right portrait sidebar ONLY!
   }
 }
 
 // Style in common for both sidebars:
-#left, #right { transition: min-width var(--secs);
-  min-width: 0; width: 0;
+#left, #right { transition: width var(--secs); width: 0;
   @media (orientation: landscape) {
-    &.open { min-width: var(--landscape-width);
-      overflow: hidden; // For overflow on window resize!
-    }
-  } // <--^ Landscape ONLY sidebars
+    &.open { width: calc(1% * var(--landscape-width)); }
+  } // <-- Landscape ONLY sidebars
   .icon { position: fixed; z-index: 10;
     width: var(--header-height); height: var(--header-height);
     line-height: var(--header-height); font-size: var(--header-height);
@@ -66,9 +63,7 @@ body {
   }
   .sidebar { transition: transform var(--secs); // <-- Portrait AND landscape!
     @media (orientation: portrait) { width: var(--portrait-width); }
-    @media (orientation: landscape) { width: var(--landscape-width);
-      &.open { min-width: inherit; }
-    }
+    @media (orientation: landscape) { width: calc(1vw * var(--landscape-width)); }
     .header { width: calc(100% - var(--header-height)); }
   }
 }
