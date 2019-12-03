@@ -12,21 +12,6 @@ class Layout extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.leftSidebar = document.querySelector('#left .sidebar');
-    this.snapToFlex();
-    this.leftSidebar.addEventListener('transitionend', this.snapToFlex);
-  }
-
-  componentWillUnmount() {
-    this.leftSidebar.removeEventListener('transitionend', this.snapToFlex);
-  }
-
-  snapToFlex = () => { // This makes the left sidebar more responsive on window resize
-    this.leftSidebar.classList.toggle('flex-width',
-        this.leftSidebar.classList.contains('open'));
-  }
-
   toggleSidebar = (event) => {
     let key = `${event.currentTarget.parentNode.id}Open`;
     this.setState({ [key]: !this.state[key] });

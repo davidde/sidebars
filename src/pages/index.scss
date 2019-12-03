@@ -52,9 +52,12 @@ body {
 }
 
 // Style in common for both sidebars:
-#left, #right { transition: width var(--secs); width: 0;
+#left, #right { transition: min-width var(--secs);
+  min-width: 0; width: 0;
   @media (orientation: landscape) {
-    &.open { width: var(--landscape-width); }
+    &.open { min-width: var(--landscape-width);
+      overflow: hidden; // For overflow on window resize!
+    }
   } // <--^ Landscape ONLY sidebars
   .icon { position: fixed; z-index: 10;
     width: var(--header-height); height: var(--header-height);
@@ -64,7 +67,7 @@ body {
   .sidebar { transition: transform var(--secs); // <-- Portrait AND landscape!
     @media (orientation: portrait) { width: var(--portrait-width); }
     @media (orientation: landscape) { width: var(--landscape-width);
-      &.open { &.flex-width { width: inherit; } }
+      &.open { min-width: inherit; }
     }
     .header { width: calc(100% - var(--header-height)); }
   }

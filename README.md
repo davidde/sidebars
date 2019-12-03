@@ -28,7 +28,7 @@ while opening, the actual sidebars are not these flex items,
 but a child div with a fixed width.
 
 As a result, the sidebars make use of 2 separate transitions:
-- One for the (landscape) `width`, so the main content adapts
+- One for the (landscape) `min-width`, so the main content adapts
   to the opened sidebars taking in space.
 - One for the `transform: translateX` which slides the
   (portrait and landscape) sidebars in and out of view.
