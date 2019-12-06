@@ -23,7 +23,7 @@ body {
 #layout { display: flex; }
 
 // Main area specific style:
-#main { background: var(--bg-main);
+#main { background: var(--bg-main); flex-grow: 1;
   .header { background: linear-gradient(to right, var(--bg-left), var(--bg-right));
     @media (orientation: landscape) {
       .title { transition: left var(--secs), right var(--secs);
