@@ -20,7 +20,10 @@ body {
 }
 
 // Flexbox definition:
-#layout { display: flex; }
+#layout {
+  display: flex;
+  overflow: hidden; // Disable scrolling on layout
+}
 
 // Main area specific style:
 #main { background: var(--bg-main); flex-grow: 1;
@@ -74,4 +77,9 @@ body {
   text-align: center; // Horizontal center
   .title { position: absolute; left: 0; right: 0; }
 }
-.content { height: 100vh; padding: 1rem; }
+.content {
+  overflow: auto;
+  box-sizing: border-box;
+  height: calc(100vh - var(--header-height));
+  padding: 1rem;
+}
