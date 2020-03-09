@@ -35,3 +35,8 @@ As a result, the sidebars make use of **2 separate transitions**:
 - Another to slide the (portrait and landscape) fixed-width sidebar child divs
   in and out of view,  
   by **transitioning their `transform: translateX(-100%)` property**.
+  
+## Implementations
+For a more mature implementation, see [gatsby-theme-simpwa](https://github.com/davidde/gatsby-theme-simpwa)
+and its starter [gatsby-starter-simpwa](https://github.com/davidde/gatsby-starter-simpwa).  
+You can see them both deployed [here](https://davidde.github.io/gatsby-starter-simpwa/).
