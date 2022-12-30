@@ -18,7 +18,7 @@
     "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "dependencies": {
-    "gatsby": "^2.18.5",
+    "gatsby": "^2.32.13",
     "gatsby-plugin-sass": "^2.1.23",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
